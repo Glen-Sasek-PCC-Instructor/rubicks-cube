@@ -207,59 +207,52 @@ button:hover {
   color: #4b5563;
 }
 
-.cube-scene {
-  display: flex;
+.cube-net {
+  display: grid;
+  grid-template-columns: repeat(4, 120px);
+  grid-template-rows: repeat(3, 120px);
+  gap: 16px;
   justify-content: center;
   margin-top: 20px;
-  perspective: 900px;
-}
-
-.cube {
-  --cube-size: 180px;
-  position: relative;
-  width: var(--cube-size);
-  height: var(--cube-size);
-  transform-style: preserve-3d;
-  transform: rotateX(-30deg) rotateY(45deg);
-  transition: transform 0.5s ease;
 }
 
 .face {
-  position: absolute;
-  width: var(--cube-size);
-  height: var(--cube-size);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 6px;
-  padding: 8px;
+  gap: 4px;
+  padding: 6px;
   background: #111827;
-  border-radius: 16px;
-  box-shadow: inset 0 0 12px rgba(15, 23, 42, 0.5);
-}
-
-.face[data-face="F"] {
-  transform: translateZ(calc(var(--cube-size) / 2));
-}
-
-.face[data-face="B"] {
-  transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2));
-}
-
-.face[data-face="R"] {
-  transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2));
-}
-
-.face[data-face="L"] {
-  transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
+  border-radius: 12px;
 }
 
 .face[data-face="U"] {
-  transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
+  grid-column: 2 / 3;
+}
+
+.face[data-face="L"] {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.face[data-face="F"] {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.face[data-face="R"] {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+
+.face[data-face="B"] {
+  grid-column: 4 / 5;
+  grid-row: 2 / 3;
 }
 
 .face[data-face="D"] {
-  transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2));
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
 }
 
 .sticker {
@@ -340,7 +333,13 @@ button:hover {
     width: 100%;
   }
 
-  .cube {
-    --cube-size: 150px;
+  .cube-net {
+    grid-template-columns: repeat(2, 120px);
+    grid-template-rows: repeat(4, 120px);
+  }
+
+  .face[data-face="B"] {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
   }
 }
