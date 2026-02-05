@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rubik's Cube Solution Trainer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <div>
+          <p class="eyebrow">Interactive practice lab</p>
+          <h1>Rubik's Cube Solution Trainer</h1>
+          <p class="subtitle">
+            Drill algorithms, track your progress, and practice the next move with
+            an interactive cube net.
+          </p>
+        </div>
+        <div class="stats">
+          <div>
+            <span class="label">Session</span>
+            <span id="session-count" class="value">0</span>
+          </div>
+          <div>
+            <span class="label">Best time</span>
+            <span id="best-time" class="value">--</span>
+          </div>
+          <div>
+            <span class="label">Current time</span>
+            <span id="current-time" class="value">00:00</span>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="panel">
+          <h2>Practice Controls</h2>
+          <div class="control-row">
+            <label>
+              Training mode
+              <select id="mode-select">
+                <option value="beginner">Beginner cross + corners</option>
+                <option value="cfop">CFOP PLL + OLL</option>
+                <option value="f2l">F2L pairs</option>
+              </select>
+            </label>
+            <label>
+              Pace
+              <select id="pace-select">
+                <option value="slow">Slow walkthrough</option>
+                <option value="normal" selected>Normal</option>
+                <option value="fast">Speed drill</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="control-row">
+            <button id="new-case" class="primary">New case</button>
+            <button id="toggle-solution">Show solution</button>
+            <button id="step-move">Step move</button>
+            <button id="reset-case">Reset case</button>
+          </div>
+
+          <div class="case-details" id="case-details">
+            <div>
+              <p class="label">Case name</p>
+              <p id="case-name" class="value">Ready to start</p>
+            </div>
+            <div>
+              <p class="label">Goal</p>
+              <p id="case-goal" class="value">
+                Select a mode and click “New case” to begin.
+              </p>
+            </div>
+          </div>
+
+          <div class="solution" id="solution-card">
+            <div class="solution-header">
+              <h3>Algorithm</h3>
+              <span id="solution-pace" class="pill">Normal</span>
+            </div>
+            <p id="case-alg" class="alg">--</p>
+            <div class="move-tracker" id="move-tracker"></div>
+            <p id="case-tip" class="tip">Tip: Keep your cube oriented with white on top.</p>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Interactive Cube Net</h2>
+          <p class="subtitle">
+            Click a sticker to cycle colors while you practice finger tricks and
+            visual recognition on a 3D cube.
+          </p>
+          <div class="cube-scene" aria-label="Rubik's cube 3D scene">
+            <div class="cube" id="cube-net" aria-label="Rubik's cube"></div>
+          </div>
+          <div class="legend">
+            <span><span class="swatch white"></span>U (White)</span>
+            <span><span class="swatch yellow"></span>D (Yellow)</span>
+            <span><span class="swatch red"></span>R (Red)</span>
+            <span><span class="swatch orange"></span>L (Orange)</span>
+            <span><span class="swatch blue"></span>B (Blue)</span>
+            <span><span class="swatch green"></span>F (Green)</span>
+          </div>
+        </section>
+      </main>
+
+      <section class="panel progress">
+        <h2>Progress Checklist</h2>
+        <ul id="progress-list">
+          <li><input type="checkbox" /> Execute algorithm without pauses.</li>
+          <li><input type="checkbox" /> Recognize the case within 3 seconds.</li>
+          <li><input type="checkbox" /> Re-grip only once (or less).</li>
+          <li><input type="checkbox" /> Visualize the next step.</li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
